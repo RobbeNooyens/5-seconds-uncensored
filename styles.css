@@ -49,7 +49,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: #466A72; /* Color from palette */
-    transition: top 5s linear;
+    transition: top 6s linear;
 }
 
 .container {

@@ -57,37 +57,39 @@ function startGame() {
 
     // Reset square position and visibility
     squareElement.style.top = '-100%';
-    squareElement.style.transition = 'top 5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    squareElement.style.transition = 'top 6s cubic-bezier(0.25, 0.1, 0.25, 1)';
 
     // Move square to the middle
     setTimeout(() => {
         squareElement.style.top = '0';
     }, 50);
 
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = timeLeft;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
+    setTimeout(() => {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
 
-            // Flash the square
-            squareElement.style.transition = 'none';
-            squareElement.style.animation = 'flash 0.5s ease';
+                // Flash the square
+                squareElement.style.transition = 'none';
+                squareElement.style.animation = 'flash 0.5s ease';
 
-            setTimeout(() => {
-                // Drop the square with ease
-                squareElement.style.animation = 'none';
-                squareElement.style.transition = 'top 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                squareElement.style.top = '100%';
-
-                // Reset the square for the next start
                 setTimeout(() => {
-                    squareElement.style.transition = 'none';
-                    squareElement.style.top = '-100%';
-                }, 500);
+                    // Drop the square with ease
+                    squareElement.style.animation = 'none';
+                    squareElement.style.transition = 'top 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                    squareElement.style.top = '100%';
 
-            }, 500);
-        }
+                    // Reset the square for the next start
+                    setTimeout(() => {
+                        squareElement.style.transition = 'none';
+                        squareElement.style.top = '-100%';
+                    }, 500);
+
+                }, 500);
+            }
+        }, 1000);
     }, 1000);
 }
 
